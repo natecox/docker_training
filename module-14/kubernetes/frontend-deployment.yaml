@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-depolyment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: natecox/kub-demo-frontend
+          imagePullPolicy: Always
+          env:
+            - name: TASKS_ADDRESS
+              value: "balls"
